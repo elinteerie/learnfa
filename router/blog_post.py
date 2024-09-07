@@ -7,3 +7,9 @@ router = APIRouter(prefix='/blog',
 @router.post('/new')
 def create_blog():
     pass
+
+
+
+
+def required_functionality():
+    return {'message': "learning fast api is important"}
