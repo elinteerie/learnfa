@@ -2,6 +2,9 @@ from fastapi import APIRouter
 from fastapi import Response, Header, Cookie, Form
 from fastapi.responses import HTMLResponse
 from typing import Optional
+from custom_log import log
+import time
+import asyncio 
 
 
 router = APIRouter(prefix='/product', 
@@ -32,11 +35,17 @@ def get_prod(response: Response,
 
     }
 
+async def time_consuming():
+    asyncio.sleep(20)
+    return "Okay Done"
+
 
 
 @router.get('/all')
-def get_all_product():
+async def get_all_product():
+    await time_consuming()
     data = " ".join(products)
+    log("API", "Call to get all Product")
     response =Response(content=data, media_type="text/plain")
     response.set_cookie("test_cookie", value="test_874766474")
     return response

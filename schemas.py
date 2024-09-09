@@ -18,6 +18,11 @@ class UserBase(BaseModel):
     password: str
 
 
+class UserCurrent(BaseModel):
+    username: str
+    email: str
+
+
 
 class UserDisplay(BaseModel):
     username: str
